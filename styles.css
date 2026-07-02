@@ -26,6 +26,7 @@ body {
 body.en-mode .zh { display: none; }
 body.en-mode .en { display: block; }
 .hidden { display: none !important; }
+body.en-mode .en.hidden { display: block !important; }
 
 /* ── Nav ── */
 #nav {

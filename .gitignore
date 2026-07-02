@@ -1,0 +1,39 @@
+# Build artifacts and backups
+data.js.backup
+data.js.backup3
+data.js.bak
+data.js.bak2
+data.js.i18n_backup
+*~
+*.bak
+*.tmp
+
+# Local dev servers (not needed on production)
+server.js
+server.py
+
+# Diagnostic / debug scripts
+diag.js
+diag2.js
+diag3.js
+diag4.js
+verify.js
+verify_data.js
+check_data_temp.js
+check_imgs.py
+test_search.js
+analyze_cases.js
+embed_imgs.js
+export_top.js
+
+# Diagnostic / test pages
+test_images.html
+direct89.html
+
+# Test data
+test_full_i18n.json
+cases_with_images.txt
+case_full_*.txt
+
+# Stray artifact
+{const

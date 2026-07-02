@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>病案库 — 袁大夫中医健康咨询</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">袁大夫 <span class="en">Dr. Yuan TCM</span></a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="cases.html" class="active">病案库</a>
+      <a href="about.html">关于</a>
+      <a href="faq.html">常见问题</a>
+      <a href="index.html#appointment" class="btn-nav">预约咨询</a>
+      <button id="langToggle" onclick="toggleLang()" class="lang-btn">EN</button>
+    </div>
+  </div>
+</nav>
+
+<section class="cases-header">
+  <h1 class="zh">📂 病案库</h1>
+  <h1 class="en hidden">📂 Case Library</h1>
+  <p class="zh">按疾病分类浏览284篇真实临床病案 · 点击标题查看全文</p>
+  <p class="en hidden">Browse 284 real clinical case records by condition · Click title to read full case</p>
+</section>
+
+<div class="cases-toolbar" id="toolbar">
+  <input type="text" id="caseSearch" placeholder="搜索病案标题 / 输入病例号…" class="zh">
+  <input type="text" id="caseSearchEn" placeholder="Search case title / enter case #..." class="en hidden">
+  <select id="catFilter">
+    <option value="" class="zh">全部疾病</option>
+    <option value="" class="en hidden">All Categories</option>
+  </select>
+  <span id="resultCount" style="font-size:13px;color:var(--gray);white-space:nowrap"></span>
+</div>
+
+<div class="cases-list" id="casesList"></div>
+
+<div id="caseDetail" style="display:none">
+  <div class="case-detail">
+    <a href="#" class="back-link" onclick="backToList();return false"><span class="zh">← 返回病案列表</span><span class="en hidden">← Back to Case List</span></a>
+    <h1 id="detailTitle"></h1>
+    <div class="case-meta" id="detailMeta"></div>
+    <div class="case-body" id="detailBody"></div>
+    <br>
+    <a href="#" class="back-link" onclick="backToList();return false"><span class="zh">← 返回病案列表</span><span class="en hidden">← Back to Case List</span></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Dr. Yuan TCM Wellness. <span class="zh">本网站内容仅供健康咨询参考。</span></p>
+  </div>
+</footer>
+
+<script src="data.js?v=2"></script>
+<script src="script.js?v=3"></script>
+</body>
+</html>

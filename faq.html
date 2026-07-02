@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>常见问题 — 袁大夫中医健康咨询</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">袁大夫 <span class="en">Dr. Yuan TCM</span></a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="cases.html">病案库</a>
+      <a href="about.html">关于</a>
+      <a href="faq.html" class="active">常见问题</a>
+      <a href="index.html#appointment" class="btn-nav">预约咨询</a>
+      <button id="langToggle" onclick="toggleLang()" class="lang-btn">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-content">
+  <h1 class="zh">常见问题</h1>
+  <h1 class="en hidden">Frequently Asked Questions</h1>
+
+  <div class="faq-item">
+    <h3 class="zh">❓ 远程咨询怎么进行？我需要做什么准备？</h3>
+    <h3 class="en hidden">❓ How does telehealth work? What do I need?</h3>
+    <p class="zh">通过 Zoom 或微信视频进行。咨询前您需要：① 填写一份症状问卷；② 在自然光下拍摄舌苔照片（正面+侧面）；③ 如果有近期的西医检查报告，一并发来。咨询当天，袁大夫会根据您的四诊信息进行中医辨证，给出个性化调理方案。</p>
+    <p class="en hidden">Via Zoom or WeChat video. Before the session: ① complete an intake questionnaire; ② take tongue photos in natural light (front + side); ③ send any recent lab reports. During the session, Dr. Yuan will perform TCM pattern differentiation and provide a personalized wellness plan.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="zh">💰 费用是多少？如何支付？</h3>
+    <h3 class="en hidden">💰 What are the fees? How do I pay?</h3>
+    <p class="zh">初诊咨询 $80-150（45分钟），复诊 $50-80（20分钟）。中药配方及国际快递 $150-350/月。支付方式：PayPal、Stripe（信用卡）、银行转账。</p>
+    <p class="en hidden">Initial consultation $80-150 (45 min), follow-up $50-80 (20 min). Herbal formulas including international shipping $150-350/month. Payment via PayPal, Stripe (credit cards), or bank transfer.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="zh">📦 中药怎么寄到海外？</h3>
+    <h3 class="en hidden">📦 How are the herbs shipped internationally?</h3>
+    <p class="zh">药房代煎后真空包装，通过 DHL / FedEx 国际快递发出。通常 7-10 个工作日送达美国、加拿大、欧洲、澳洲等主要国家。真空包装的中药液海关通过率高。部分地区也可选择颗粒剂（免煎中药），体积更小。</p>
+    <p class="en hidden">Herbs are decocted by a pharmacy, vacuum-sealed, and shipped via DHL/FedEx — typically arriving within 7-10 business days to US, Canada, Europe, Australia, and most countries. Granule (instant) herbs are also available for certain regions.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="zh">🩺 这能替代我去看本地医生吗？</h3>
+    <h3 class="en hidden">🩺 Does this replace my local doctor?</h3>
+    <p class="zh">不。中医远程咨询是您现有医疗保健的补充，而非替代。袁大夫不会要求您停止服用处方药或取消任何医疗预约。我们的定位是：在您现有治疗基础上，提供中医整体调理支持。</p>
+    <p class="en hidden">No. TCM telehealth is a complement to — not a replacement for — your existing healthcare. Dr. Yuan will never ask you to stop prescribed medications or cancel medical appointments. We provide holistic wellness support alongside your existing treatment.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="zh">🌿 中医能治什么病？有科学依据吗？</h3>
+    <h3 class="en hidden">🌿 What can TCM treat? Is there evidence?</h3>
+    <p class="zh">与其讲理论，不如看事实。袁大夫的281篇病案中，37篇附带三甲医院的西医检查报告前后对比——脂肪肝B超从重度转正常、尿毒症指标大幅下降、肿瘤指标回落等。这些是中医有效性的客观证据。当然，中医和西医的评判体系不同，我们建议您浏览病案库，自己判断。</p>
+    <p class="en hidden">Rather than theory, we let the evidence speak. Among Dr. Yuan's 281 cases, 37 include before/after lab reports from certified hospitals — fatty liver B-scans from severe to normal, kidney function markers showing dramatic improvement, tumor markers declining. We encourage you to browse the case library and draw your own conclusions.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="zh">⏱️ 什么时候能看到效果？</h3>
+    <h3 class="en hidden">⏱️ How soon will I see results?</h3>
+    <p class="zh">因病而异。急性问题如感冒咳嗽，1-3天即可见效；慢性病如湿疹、胃炎、月经不调，通常2-4周有明显改善；复杂慢性病如糖尿病、脂肪肝、肾功能问题，需1-3个月持续调理。袁大夫的病案记录了每次复诊的变化时间线，您可以参考类似病案的恢复速度。</p>
+    <p class="en hidden">It varies. Acute issues (cold, cough) may improve in 1-3 days; chronic conditions (eczema, gastritis, irregular menstruation) typically show improvement within 2-4 weeks; complex chronic issues (diabetes, fatty liver, kidney function) may require 1-3 months. Dr. Yuan's case records document the timeline of improvement for each condition — browse similar cases for reference.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Dr. Yuan TCM Wellness. <span class="zh">本网站内容仅供健康咨询参考。</span></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

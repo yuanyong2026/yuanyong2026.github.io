@@ -152,6 +152,9 @@ body.en-mode .logo .en { display: block; }
 .appointment-card { background: var(--white); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); }
 .appt-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 32px; }
 .appt-item strong { font-size: 16px; display: block; }
+.appt-item strong.en { display: none; }
+body.en-mode .appt-item strong.en { display: block !important; }
+body.en-mode .appt-item strong.zh { display: none; }
 .appt-item span { font-size: 20px; font-weight: 700; color: var(--green); display: block; margin: 6px 0; }
 .appt-item p { font-size: 13px; color: var(--gray); }
 .appt-cta { text-align: center; }

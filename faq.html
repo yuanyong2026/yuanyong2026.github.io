@@ -22,6 +22,23 @@
 .tongue-sample-img { margin:1rem 0; }
 .tongue-sample-img img { max-width:360px; width:100%; border:1px solid #ccc; border-radius:8px; display:block; }
 .questionnaire { max-width:900px; margin:2rem auto; background:#fafaf7; border:1px solid #e0dcd0; border-radius:12px; padding:2rem; }
+
+/* ── 新咨询单通知横幅 ── */
+#submission-banner { display:none; position:fixed; top:0; left:0; right:0; z-index:9999;
+  background:linear-gradient(135deg,#fef3c7,#fde68a); border-bottom:3px solid #f59e0b;
+  padding:14px 24px; text-align:center; font-size:1rem; box-shadow:0 2px 12px rgba(0,0,0,.15);
+  animation:slideDown .4s ease; }
+@keyframes slideDown { from{transform:translateY(-100%)} to{transform:translateY(0)} }
+#submission-banner .banner-text { color:#92400e; font-weight:600; }
+#submission-banner button { margin-left:16px; padding:5px 18px; background:#d97706;
+  color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:.9rem; }
+#submission-banner button:hover { background:#b45309; }
+.submission-toast { position:fixed; bottom:30px; right:30px; z-index:9998;
+  background:#059669; color:#fff; padding:14px 24px; border-radius:10px;
+  box-shadow:0 4px 16px rgba(0,0,0,.2); font-size:.95rem; display:none;
+  animation:fadeInUp .4s ease; }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
 .questionnaire h2 { font-size:1.5rem; color:#5b7a4c; margin-bottom:.3rem; }
 .questionnaire .subtitle { color:#888; font-size:.9rem; margin-bottom:1.5rem; }
 .q-block { margin-bottom:1.8rem; border-bottom:1px solid #eee; padding-bottom:1.2rem; }
@@ -94,6 +111,13 @@
 </nav>
 
 <div class="page-content">
+  <!-- ═══ 新咨询单通知横幅 ═══ -->
+  <div id="submission-banner">
+    <span class="banner-text">⚠️ 检测到有新的咨询单提交，请查看邮箱及 Telegram。</span>
+    <button onclick="dismissBanner()">知道了 ✓</button>
+  </div>
+
+
   <h1 class="zh">常见问题</h1>
   <h1 class="en hidden">Frequently Asked Questions</h1>
 
@@ -158,6 +182,8 @@
       <button class="btn-download en hidden" onclick="downloadQuestionnaire()">💾 Download to Computer</button>
       <button onclick="window.print()">🖨️ 打印问卷</button>
       <button class="en hidden" onclick="window.print()">🖨️ Print</button>
+      <button class="btn-submit" onclick="submitAndNotify()">📤 提交并通知医生</button>
+      <button class="btn-submit en hidden" onclick="submitAndNotify()">📤 Submit &amp; Notify</button>
       <button class="btn-reset" onclick="resetQuestionnaire()">清空重填</button>
       <button class="btn-reset en hidden" onclick="resetQuestionnaire()">Reset All</button>
     </div>
@@ -690,6 +716,81 @@ function sendToEmail() {
   window.location.href = mailto;
 }
 
+// ── 【方案A+B+C】一键提交：邮箱 + Telegram + 本地标记 ──
+function submitAndNotify() {
+  var lines = collectFormData();
+  var name = idVal('name') || '未填姓名';
+  var text = lines.join('\n');
+
+  // A: 打开邮件客户端
+  var body = encodeURIComponent(text);
+  var mailto = 'mailto:folk.tcm.yuanyong26@gmail.com?subject=' + encodeURIComponent('症状咨询单 - ' + name) + '&body=' + body;
+  window.open(mailto, '_blank');
+
+  // B: 发送 Telegram 通知
+  sendToTelegram(text, name);
+
+  // C: 标记本地有新提交
+  markNewSubmission(name);
+
+  // 显示成功提示
+  showToast();
+}
+
+// ── B: Telegram Bot 通知 ──
+// 首次使用请按下方说明获取 TOKEN 和 CHAT_ID，填入下方两个变量
+var TG_BOT_TOKEN = '';  // ← 填 Bot Token，如 '123456:ABCdef...'
+var TG_CHAT_ID = '';    // ← 填 Chat ID，如 '123456789'
+
+function sendToTelegram(text, name) {
+  if (!TG_BOT_TOKEN || !TG_CHAT_ID) return;
+  var msg = '<b>📋 新咨询单</b>\n<b>患者：</b>' + name + '\n<b>时间：</b>' + new Date().toLocaleString('zh-CN') + '\n\n<pre>' + text.slice(0, 3500) + '</pre>';
+  fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: TG_CHAT_ID, text: msg, parse_mode: 'HTML' })
+  }).catch(function(){});
+}
+
+// ── C: 本地提交标记 ──
+function markNewSubmission(name) {
+  var list = JSON.parse(localStorage.getItem('tcm_submissions') || '[]');
+  list.push({ name: name, time: new Date().toISOString(), read: false });
+  if (list.length > 50) list = list.slice(-50);
+  localStorage.setItem('tcm_submissions', JSON.stringify(list));
+}
+
+function checkNewSubmissions() {
+  var list = JSON.parse(localStorage.getItem('tcm_submissions') || '[]');
+  var unread = list.filter(function(s) { return !s.read; });
+  if (unread.length > 0) {
+    var banner = document.getElementById('submission-banner');
+    if (banner) {
+      banner.querySelector('.banner-text').textContent = '⚠️ 有 ' + unread.length + ' 份新咨询单待查看。' + (unread.length === 1 ? '患者：' + unread[0].name : '最近：' + unread[unread.length-1].name);
+      banner.style.display = 'block';
+    }
+  }
+}
+
+function dismissBanner() {
+  var list = JSON.parse(localStorage.getItem('tcm_submissions') || '[]');
+  list.forEach(function(s) { s.read = true; });
+  localStorage.setItem('tcm_submissions', JSON.stringify(list));
+  document.getElementById('submission-banner').style.display = 'none';
+}
+
+function showToast() {
+  var toast = document.getElementById('submit-toast');
+  if (!toast) return;
+  toast.style.display = 'block';
+  setTimeout(function() { toast.style.display = 'none'; }, 4000);
+}
+
+// 页面加载时检查
+document.addEventListener('DOMContentLoaded', function() {
+  checkNewSubmissions();
+});
+
 // ── 下载到本地 ──
 function downloadQuestionnaire() {
   var lines = collectFormData();
@@ -753,7 +854,10 @@ function downloadTongueGuide() {
     '<h2>舌象样片</h2>' +
     '<div class="img-wrap"><img src="' + base64 + '" alt="舌象样片"></div>' +
     '<div class="footer">© 袁大夫中医健康咨询 · yuanyong2026.github.io</div>' +
-    '</body></html>';
+    '
+<div id="submit-toast" class="submission-toast">✅ 咨询单已通过邮件和 Telegram 发送！</div>
+
+</body></html>';
   var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
@@ -885,5 +989,8 @@ function toggleLang() {
 }
 </script>
 <script src="script.js"></script>
+
+<div id="submit-toast" class="submission-toast">✅ 咨询单已通过邮件和 Telegram 发送！</div>
+
 </body>
 </html>

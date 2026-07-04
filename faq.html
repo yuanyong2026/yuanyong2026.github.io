@@ -48,11 +48,19 @@
 .q-body { display:none; margin-top:.6rem; }
 .q-body.show { display:block; }
 
+/* 问卷整体折叠 */
+.q-header { display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; }
+.q-header h2 { flex:1; margin:0; }
+.q-header .collapse-arrow { font-size:1.2rem; color:#5b7a4c; transition:transform .3s; }
+.q-header.collapsed .collapse-arrow { transform:rotate(-90deg); }
+.q-content { overflow:hidden; transition:max-height .4s ease; max-height:9999px; }
+.q-content.hidden { max-height:0; }
 /* 问卷顶部操作 */
-.q-actions { text-align:right; margin-bottom:1rem; }
-.q-actions button { background:#5b7a4c; color:#fff; border:none; padding:.4rem 1rem; border-radius:6px; cursor:pointer; font-size:.85rem; margin-left:.5rem; }
+.q-actions { text-align:right; margin-bottom:1rem; display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.4rem; }
+.q-actions button { background:#5b7a4c; color:#fff; border:none; padding:.4rem 1rem; border-radius:6px; cursor:pointer; font-size:.85rem; }
 .q-actions button:hover { opacity:.85; }
 .q-actions .btn-reset { background:#ccc; color:#333; }
+.q-actions .btn-send { background:#3a6b8c; }
 </style>
 </head>
 <body>
@@ -84,15 +92,21 @@
 
   <!-- ═══════ 症状咨询单 ═══════ -->
   <div class="questionnaire" id="symptom-questionnaire">
-    <h2>📋 慢性病症状咨询单</h2>
+    <div class="q-header" onclick="toggleQuestionnaire()" title="点击折叠/展开">
+      <h2>📋 慢性病症状咨询单</h2>
+      <span class="collapse-arrow">▼</span>
+    </div>
     <p class="subtitle">请仔细填写以下内容。初诊填"初诊"处，复诊按"二诊→三诊"依次填写。每次内容请保留，不要删除。</p>
 
     <div class="q-actions">
-      <button class="btn-reset" onclick="resetQuestionnaire()">清空重填</button>
+      <button class="btn-send" onclick="sendToEmail()">📧 保存并发送到邮箱</button>
       <button onclick="window.print()">🖨️ 打印问卷</button>
+      <button class="btn-reset" onclick="resetQuestionnaire()">清空重填</button>
     </div>
 
+    <div class="q-content">
     <!-- ═══ 基础信息 ═══ -->
+
     <div class="q-block">
       <h4>📝 基本信息</h4>
       <div class="info-row">
@@ -457,6 +471,7 @@
       </div>
     </div>
 
+    </div><!-- /q-content -->
   </div><!-- /questionnaire -->
 
   <!-- ═══════ 其余 FAQ ═══════ -->
@@ -527,11 +542,122 @@
 </footer>
 
 <script>
+// ── 整体折叠咨询单 ──
+function toggleQuestionnaire() {
+  var header = document.querySelector('#symptom-questionnaire .q-header');
+  var content = document.querySelector('#symptom-questionnaire .q-content');
+  header.classList.toggle('collapsed');
+  content.classList.toggle('hidden');
+}
+
 // ── 折叠面板 ──
 function toggleQ(btn) {
   btn.classList.toggle('open');
   var body = btn.nextElementSibling;
   body.classList.toggle('show');
+}
+
+// ── 保存并发送到邮箱 ──
+function sendToEmail() {
+  var lines = [];
+  lines.push('=== 慢性病症状咨询单 ===');
+  lines.push('');
+
+  var name = idVal('name');
+  var gender = idVal('gender');
+  var age = idVal('age');
+  var occupation = idVal('occupation');
+  var bodyType = idVal('body-type');
+  var ethnicity = idVal('ethnicity');
+  var lang = idVal('language');
+  var region = idVal('region');
+  var phone = idVal('phone');
+  var lastVisit = idVal('last-visit-date');
+  var currentVisit = idVal('current-visit-date');
+  var wechat = document.getElementById('wechat-video') && document.getElementById('wechat-video').checked ? '√' : '';
+  var qOnly = document.getElementById('questionnaire-only') && document.getElementById('questionnaire-only').checked ? '√' : '';
+
+  lines.push('【基本信息】');
+  lines.push('姓名: ' + name);
+  lines.push('性别: ' + gender + '  年龄: ' + age + '  职业: ' + occupation);
+  lines.push('身型: ' + bodyType + '  种族: ' + ethnicity + '  语言: ' + lang);
+  lines.push('常居地区: ' + region + '  电话: ' + phone);
+  lines.push('上次就诊: ' + lastVisit + '  本次就诊: ' + currentVisit);
+  if (wechat || qOnly) lines.push('微信视频: ' + wechat + '  单纯咨询单: ' + qOnly);
+  lines.push('');
+
+  lines.push('【既往病史】');
+  var hxBlocks = document.querySelectorAll('#symptom-questionnaire .q-block:not([id]) textarea');
+  var hxNum = 1;
+  for (var hi = 0; hi < hxBlocks.length; hi++) {
+    if (hxBlocks[hi].value) {
+      var lbl = hxBlocks[hi].previousElementSibling;
+      lines.push((lbl ? lbl.textContent.trim() : ('项-' + hxNum)) + ': ' + hxBlocks[hi].value);
+    }
+    hxNum++;
+  }
+  lines.push('');
+
+  for (var i = 1; i <= 14; i++) {
+    var block = document.getElementById('q' + i);
+    if (!block) continue;
+    var titleEl = block.querySelector('.q-toggle');
+    var title = titleEl ? titleEl.textContent.trim() : ('Q' + i);
+    lines.push('【' + title + '】');
+
+    var checks = block.querySelectorAll('input[type="checkbox"]:checked');
+    if (checks.length > 0) {
+      var checkedVals = [];
+      for (var ci = 0; ci < checks.length; ci++) {
+        checkedVals.push(checks[ci].value || checks[ci].parentElement.textContent.trim());
+      }
+      lines.push('勾选: ' + checkedVals.join(', '));
+    }
+
+    var txtInputs = block.querySelectorAll('input[type="text"]');
+    for (var ti = 0; ti < txtInputs.length; ti++) {
+      if (txtInputs[ti].value) {
+        var parentLbl = txtInputs[ti].closest('label');
+        lines.push((parentLbl ? parentLbl.textContent.trim() : '') + ': ' + txtInputs[ti].value);
+      }
+    }
+
+    var selects = block.querySelectorAll('select');
+    for (var si = 0; si < selects.length; si++) {
+      if (selects[si].value) {
+        var slbl = selects[si].closest('label');
+        lines.push((slbl ? slbl.textContent.trim() : '') + ': ' + selects[si].value);
+      }
+    }
+
+    var dates = block.querySelectorAll('input[type="date"]');
+    for (var di = 0; di < dates.length; di++) {
+      if (dates[di].value) {
+        var dlbl = dates[di].closest('label');
+        lines.push((dlbl ? dlbl.textContent.trim() : '日期') + ': ' + dates[di].value);
+      }
+    }
+
+    var areas = block.querySelectorAll('textarea');
+    for (var ai = 0; ai < areas.length; ai++) {
+      if (areas[ai].value) {
+        var albl = areas[ai].previousElementSibling;
+        var alblText = albl ? albl.textContent.trim() : ('补充-' + (ai + 1));
+        lines.push(alblText + ': ' + areas[ai].value);
+      }
+    }
+
+    lines.push('');
+  }
+
+  var body = encodeURIComponent(lines.join('\n'));
+  var mailto = 'mailto:folk.tcm.yuanyong26@gmail.com?subject=' + encodeURIComponent('症状咨询单 - ' + (name || '未填姓名')) + '&body=' + body;
+  window.location.href = mailto;
+}
+
+function idVal(id) {
+  var el = document.getElementById(id);
+  return el ? el.value : '';
 }
 
 // ── 清空重填 ──

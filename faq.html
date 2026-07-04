@@ -61,6 +61,7 @@
 .q-actions button:hover { opacity:.85; }
 .q-actions .btn-reset { background:#ccc; color:#333; }
 .q-actions .btn-send { background:#3a6b8c; }
+.q-actions .btn-download { background:#7b6e4c; }
 </style>
 </head>
 <body>
@@ -100,6 +101,7 @@
 
     <div class="q-actions">
       <button class="btn-send" onclick="sendToEmail()">📧 保存并发送到邮箱</button>
+      <button class="btn-download" onclick="downloadQuestionnaire()">💾 下载到本地</button>
       <button onclick="window.print()">🖨️ 打印问卷</button>
       <button class="btn-reset" onclick="resetQuestionnaire()">清空重填</button>
     </div>
@@ -559,6 +561,31 @@ function toggleQ(btn) {
 
 // ── 保存并发送到邮箱 ──
 function sendToEmail() {
+  var lines = collectFormData();
+  var name = idVal('name');
+  var body = encodeURIComponent(lines.join('\n'));
+  var mailto = 'mailto:folk.tcm.yuanyong26@gmail.com?subject=' + encodeURIComponent('症状咨询单 - ' + (name || '未填姓名')) + '&body=' + body;
+  window.location.href = mailto;
+}
+
+// ── 下载到本地 ──
+function downloadQuestionnaire() {
+  var lines = collectFormData();
+  var name = idVal('name') || '未填姓名';
+  var text = lines.join('\n');
+  var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = '症状咨询单_' + name + '.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ── 收集表单数据（供发送邮箱和下载共用）──
+function collectFormData() {
   var lines = [];
   lines.push('=== 慢性病症状咨询单 ===');
   lines.push('');
@@ -650,9 +677,7 @@ function sendToEmail() {
     lines.push('');
   }
 
-  var body = encodeURIComponent(lines.join('\n'));
-  var mailto = 'mailto:folk.tcm.yuanyong26@gmail.com?subject=' + encodeURIComponent('症状咨询单 - ' + (name || '未填姓名')) + '&body=' + body;
-  window.location.href = mailto;
+  return lines;
 }
 
 function idVal(id) {

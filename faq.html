@@ -126,6 +126,7 @@
     <div class="zh tongue-sample-img"><img src="images/tongue-sample.jpg" alt="舌象样片"></div>
     <div class="zh q-actions" style="margin-top:1rem;">
       <button class="btn-download" onclick="downloadTongueGuide()">💾 下载拍摄方案到本地</button>
+      <button class="btn-download en hidden" onclick="downloadTongueGuide()">💾 Download Tongue Guide</button>
     </div>
     <ol class="en hidden tongue-guide">
       <li>Turn off your phone's <strong>beauty filter</strong>.</li>
@@ -144,15 +145,21 @@
   <div class="questionnaire" id="symptom-questionnaire">
     <div class="q-header" onclick="toggleQuestionnaire()" title="点击折叠/展开">
       <h2>📋 慢性病症状咨询单</h2>
+      <h2 class="en hidden">📋 Chronic Condition Symptom Questionnaire</h2>
       <span class="collapse-arrow">▼</span>
     </div>
+    <p class="subtitle en hidden">Please fill in carefully. First visit: fill the &quot;Initial Visit&quot; fields. Follow-ups: fill &quot;2nd Visit → 3rd Visit&quot; in order. Keep all previous entries — do not delete.</p>
     <p class="subtitle">请仔细填写以下内容。初诊填"初诊"处，复诊按"二诊→三诊"依次填写。每次内容请保留，不要删除。</p>
 
     <div class="q-actions">
       <button class="btn-send" onclick="sendToEmail()">📧 保存并发送到邮箱</button>
+      <button class="btn-send en hidden" onclick="sendToEmail()">📧 Save &amp; Email</button>
       <button class="btn-download" onclick="downloadQuestionnaire()">💾 下载到本地</button>
+      <button class="btn-download en hidden" onclick="downloadQuestionnaire()">💾 Download to Computer</button>
       <button onclick="window.print()">🖨️ 打印问卷</button>
+      <button class="en hidden" onclick="window.print()">🖨️ Print</button>
       <button class="btn-reset" onclick="resetQuestionnaire()">清空重填</button>
+      <button class="btn-reset en hidden" onclick="resetQuestionnaire()">Reset All</button>
     </div>
 
     <div class="q-content">
@@ -160,25 +167,28 @@
 
     <div class="q-block">
       <h4>📝 基本信息</h4>
+      <h4 class="en hidden">📝 Basic Information</h4>
       <div class="info-row">
-        <label>上次就诊时间 <input type="date" id="last-visit-date"></label>
+        <label class="en hidden">Last Visit <input type="date" id="last-visit-date"></label>
         <label><input type="checkbox" id="wechat-video"> 微信视频</label>
+        <label class="en hidden"><input type="checkbox" id="wechat-video-en"> WeChat Video</label>
         <label><input type="checkbox" id="questionnaire-only"> 单纯症状咨询单</label>
-        <label>本次就诊时间 <input type="date" id="current-visit-date"></label>
+        <label class="en hidden"><input type="checkbox" id="questionnaire-only-en"> Questionnaire Only</label>
+        <label class="en hidden">This Visit <input type="date" id="current-visit-date"></label>
       </div>
       <div class="info-row">
-        <label>姓名 <input type="text" id="name" placeholder="姓名"></label>
-        <label>性别
+        <label class="en hidden">Name <input type="text" id="name" placeholder="姓名"></label>
+        <label class="en hidden">Gender
           <select id="gender"><option value="">请选择</option><option>男</option><option>女</option></select>
         </label>
-        <label>年龄 <input type="text" id="age" size="4" placeholder="岁"></label>
-        <label>职业 <input type="text" id="occupation" placeholder="职业"></label>
+        <label class="en hidden">Age <input type="text" id="age" size="4" placeholder="岁"></label>
+        <label class="en hidden">Occupation <input type="text" id="occupation" placeholder="职业"></label>
       </div>
       <div class="info-row">
-        <label>身型
+        <label class="en hidden">Body Type
           <select id="body-type"><option value="">请选择</option><option>胖</option><option>瘦</option><option>一般</option></select>
         </label>
-        <label>种族
+        <label class="en hidden">Ethnicity
           <select id="ethnicity">
             <option value="">请选择</option>
             <optgroup label="亚洲">
@@ -200,7 +210,7 @@
             </optgroup>
           </select>
         </label>
-        <label>使用语言
+        <label class="en hidden">Language
           <select id="language">
             <option value="">请选择</option>
             <option>English (英语)</option>
@@ -234,58 +244,73 @@
         </label>
       </div>
       <div class="info-row">
-        <label>近一年常居地区 <input type="text" id="region" placeholder="城市/国家"></label>
-        <label>联系电话 <input type="text" id="phone" placeholder="电话"></label>
+        <label class="en hidden">Region (last 12 months) <input type="text" id="region" placeholder="城市/国家"></label>
+        <label class="en hidden">Phone <input type="text" id="phone" placeholder="电话"></label>
       </div>
     </div>
 
     <!-- ═══ 病史 ═══ -->
     <div class="q-block">
       <h4>🏥 既往病史</h4>
+      <h4 class="en hidden">🏥 Medical History</h4>
       <div class="text-group">
         <span class="visit-label">（1）以往及现在经医院确诊的有哪些疾病？所患疾病多久了？</span>
+        <span class="visit-label en hidden">(1) What conditions have been diagnosed by a doctor (past and present)? How long have you had them?</span>
         <textarea placeholder="请详细列出疾病名称及患病时长..."></textarea>
       </div>
       <div class="text-group">
         <span class="visit-label">（2）哪些病现在比以往在加重或减轻？</span>
+        <span class="visit-label en hidden">(2) Which conditions are getting worse or better compared to before?</span>
         <textarea placeholder="请说明..."></textarea>
       </div>
       <div class="text-group">
         <span class="visit-label">（3）有哪些慢性病一直在坚持吃西药？</span>
+        <span class="visit-label en hidden">(3) Which chronic conditions are you taking Western medication for? Please list drug names and dosages.</span>
         <textarea placeholder="请列出药名及用量..."></textarea>
       </div>
     </div>
 
     <!-- ═══ Q1 ═══ -->
     <div class="q-block" id="q1">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">1、</span>主要症状描述（重点）</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">1、</span>主要症状描述（重点）<span class="en hidden"> · Main Symptoms (Important)</span></button>
       <div class="q-body">
         <p class="q-hint">描述你现在感觉最突出的病情症状表现，以及所有的不良症状感觉。越详细越好。</p>
-        <div class="text-group"><span class="visit-label">初诊（日期及内容）</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊（必须说明与上次症状对比有哪些变化）</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <p class="q-hint en hidden">Describe your most prominent symptoms and all discomfort you are currently experiencing. The more detail, the better.</p>
+        <div class="text-group"><span class="visit-label">初诊（日期及内容）</span>
+        <span class="visit-label en hidden">Initial Visit (date &amp; details)</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊（必须说明与上次症状对比有哪些变化）</span>
+        <span class="visit-label en hidden">2nd Visit (must describe changes from previous visit)</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q2 ═══ -->
     <div class="q-block" id="q2">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">2、</span>脉搏 / 血压</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">2、</span>脉搏 / 血压<span class="en hidden"> · Pulse / Blood Pressure</span></button>
       <div class="q-body">
         <p class="q-hint">每分钟脉搏跳动多少次？中途有停顿现象吗？（自己摸手腕动脉，对着表数）</p>
+        <p class="q-hint en hidden">How many pulse beats per minute? Any skipped beats? (Feel your wrist artery and count against a clock.)</p>
         <div class="info-row">
           <label>脉搏 <input type="text" size="4" placeholder="次/分"></label>
+        <label class="en hidden">Pulse <input type="text" size="4" placeholder="bpm"></label>
           <label><input type="checkbox"> 中途有停顿现象</label>
+        <label class="en hidden"><input type="checkbox"> Skipped beats</label>
           <label>血压 <input type="text" size="8" placeholder="收缩压/舒张压"></label>
+        <label class="en hidden">Blood Pressure <input type="text" size="8" placeholder="Systolic/Diastolic"></label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q3 ═══ -->
     <div class="q-block" id="q3">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">3、</span>口干 / 饮水 / 咽喉 / 眼 / 鼻炎 / 咽炎</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">3、</span>口干 / 饮水 / 咽喉 / 眼 / 鼻炎 / 咽炎<span class="en hidden"> · Dry Mouth / Throat / Eyes / Rhinitis</span></button>
       <div class="q-body">
         <div class="options-row">
           <label><input type="checkbox" name="q3" value="口干"> 口干</label>
@@ -298,15 +323,18 @@
           <label><input type="checkbox" name="q3" value="慢性鼻炎"> 慢性鼻炎</label>
           <label><input type="checkbox" name="q3" value="慢性咽炎"> 慢性咽炎</label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q4 ═══ -->
     <div class="q-block" id="q4">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">4、</span>口苦 / 口臭 / 体味 / 面部浮肿</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">4、</span>口苦 / 口臭 / 体味 / 面部浮肿<span class="en hidden"> · Bitter Taste / Odor / Facial Swelling</span></button>
       <div class="q-body">
         <div class="options-row">
           <label><input type="checkbox" name="q4" value="晨起口苦"> 晨起口苦</label>
@@ -316,34 +344,42 @@
           <label><input type="checkbox" name="q4" value="手胀"> 手胀</label>
           <label><input type="checkbox" name="q4" value="眼袋"> 有眼袋</label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q5 ═══ -->
     <div class="q-block" id="q5">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">5、</span>胸闷 / 心慌 / 呼吸</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">5、</span>胸闷 / 心慌 / 呼吸<span class="en hidden"> · Chest Tightness / Palpitation / Breathing</span></button>
       <div class="q-body">
         <div class="options-row">
           <label><input type="checkbox" name="q5" value="胸闷"> 胸闷</label>
           <label><input type="checkbox" name="q5" value="心慌"> 心慌</label>
           <label><input type="checkbox" name="q5" value="想大口吸气"> 想大口吸气</label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q6 ═══ -->
     <div class="q-block" id="q6">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">6、</span>饮食 / 消化 / 胃</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">6、</span>饮食 / 消化 / 胃<span class="en hidden"> · Diet / Digestion / Stomach</span></button>
       <div class="q-body">
         <div class="info-row">
           <label>饮食情况 <input type="text" size="10" placeholder="如：正常/差"></label>
+        <label class="en hidden">Appetite <input type="text" size="10" placeholder="e.g. Normal/Poor"></label>
           <label>每餐食量 <input type="text" size="6" placeholder="如：一碗"></label>
+        <label class="en hidden">Amount per meal <input type="text" size="6" placeholder="e.g. 1 bowl"></label>
         </div>
         <div class="options-row">
           <label><input type="checkbox" name="q6" value="食后胃胀"> 食后胃胀</label>
@@ -354,22 +390,27 @@
           <label><input type="checkbox" name="q6" value="小腹胀气"> 小腹胀气</label>
           <label><input type="checkbox" name="q6" value="放屁多"> 放屁多</label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q7 ═══ -->
     <div class="q-block" id="q7">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">7、</span>大便 / 小便</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">7、</span>大便 / 小便<span class="en hidden"> · Bowel Movement / Urination</span></button>
       <div class="q-body">
         <div class="info-row">
           <label>大便频率 <input type="text" size="6" placeholder="几日一次"></label>
+        <label class="en hidden">Bowel movement frequency <input type="text" size="6" placeholder="per day"></label>
           <label>小便颜色
             <select><option value="">请选择</option><option>黄</option><option>清</option><option>混浊</option></select>
           </label>
           <label>夜间小便 <input type="text" size="4" placeholder="次"></label>
+        <label class="en hidden">Nighttime urination <input type="text" size="4" placeholder="times"></label>
         </div>
         <div class="options-row">
           <label><input type="checkbox" name="q7" value="大便干燥"> 大便干燥</label>
@@ -378,15 +419,18 @@
           <label><input type="checkbox" name="q7" value="大便成形"> 成形</label>
           <label><input type="checkbox" name="q7" value="小便有泡沫"> 小便有泡沫</label>
         </div>
-        <div class="text-group"><span class="visit-label">大便、小便在服药期间与以前有哪些变化？初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">大便、小便在服药期间与以前有哪些变化？初诊</span>
+        <span class="visit-label en hidden">Changes in bowel/urination during treatment · Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q8 ═══ -->
     <div class="q-block" id="q8">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">8、</span>睡眠</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">8、</span>睡眠<span class="en hidden"> · Sleep</span></button>
       <div class="q-body">
         <div class="options-row">
           <label><input type="checkbox" name="q8" value="多梦"> 多梦</label>
@@ -404,16 +448,20 @@
         </div>
         <div class="info-row">
           <label>睡眠质量差多久了？ <input type="text" size="8" placeholder="如：半年"></label>
+        <label class="en hidden">Poor sleep for how long? <input type="text" size="8" placeholder="e.g. 6 months"></label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q9 ═══ -->
     <div class="q-block" id="q9">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">9、</span>腰 / 腿 / 关节 / 冷热感</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">9、</span>腰 / 腿 / 关节 / 冷热感<span class="en hidden"> · Back / Legs / Joints / Temperature</span></button>
       <div class="q-body">
         <div class="options-row">
           <label><input type="checkbox" name="q9" value="腰酸沉"> 腰酸沉</label>
@@ -426,15 +474,18 @@
           <label><input type="checkbox" name="q9" value="膝关节疼"> 膝关节疼</label>
           <label><input type="checkbox" name="q9" value="手脚心发热"> 手脚心发热</label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q10 ═══ -->
     <div class="q-block" id="q10">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">10、</span>出汗</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">10、</span>出汗<span class="en hidden"> · Sweating</span></button>
       <div class="q-body">
         <div class="options-row">
           <label><input type="checkbox" name="q10" value="身体多汗"> 身体多汗</label>
@@ -444,15 +495,18 @@
           <label><input type="checkbox" name="q10" value="一阵阵发热脸红冒汗"> 一阵阵发热、脸红后冒汗</label>
           <label><input type="checkbox" name="q10" value="手脚心出汗"> 手脚心出汗</label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q11 ═══ -->
     <div class="q-block" id="q11">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">11、</span>情绪 / 精神压力</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">11、</span>情绪 / 精神压力<span class="en hidden"> · Emotions / Stress</span></button>
       <div class="q-body">
         <div class="options-row">
           <label><input type="checkbox" name="q11" value="情绪稳定"> 情绪稳定</label>
@@ -464,61 +518,80 @@
           <label><input type="checkbox" name="q11" value="精神压力大"> 精神压力大</label>
         </div>
         <p class="q-hint">精神压力来自哪些方面？请用自己的语言形容平时的心情状态。</p>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <p class="q-hint en hidden">What are the sources of stress? Describe your usual mood in your own words.</p>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q12 ═══ -->
     <div class="q-block" id="q12">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">12、</span>治疗后变化（二诊/三诊填写）</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">12、</span>治疗后变化（二诊/三诊填写）<span class="en hidden"> · Changes After Treatment (2nd/3rd Visit)</span></button>
       <div class="q-body">
         <p class="q-hint">经过治疗后，现在与以前相比有哪些变化（包括改善的、没有改善的、新出现的问题）？</p>
+        <p class="q-hint en hidden">After treatment, what changes have you noticed? (Improvements, no change, or new issues?)</p>
         <div class="options-row">
           <label><input type="checkbox" name="q12" value="明显改善"> 明显改善</label>
           <label><input type="checkbox" name="q12" value="部分改善"> 部分改善</label>
           <label><input type="checkbox" name="q12" value="无变化"> 无变化</label>
           <label><input type="checkbox" name="q12" value="新问题出现"> 有新问题出现</label>
         </div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q13 ═══ -->
     <div class="q-block" id="q13">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">13、</span>补充问题</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">13、</span>补充问题<span class="en hidden"> · Additional Questions</span></button>
       <div class="q-body">
         <p class="q-hint">除以上各项之外，你还有哪些需要补充的问题都在此项中回答。</p>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <p class="q-hint en hidden">Please list any additional concerns not covered above.</p>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 
     <!-- ═══ Q14: 女性专用 ═══ -->
     <div class="q-block" id="q14">
-      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">14、</span>月经 / 白带（成年女性填写，男性及小孩跳过）</button>
+      <button class="q-toggle" onclick="toggleQ(this)"><span class="arrow">▶</span> <span class="q-num">14、</span>月经 / 白带（成年女性填写，男性及小孩跳过）<span class="en hidden"> · Menstruation / Discharge (Women Only)</span></button>
       <div class="q-body">
         <div class="info-row">
           <label>每月周期 <input type="text" size="6" placeholder="提前/推迟几天"></label>
+        <label class="en hidden">Cycle length <input type="text" size="6" placeholder="days early/late"></label>
           <label>最后一次月经 <input type="date"></label>
+        <label class="en hidden">Last period <input type="date"></label>
           <label>一般几天干净 <input type="text" size="3" placeholder="天"></label>
+        <label class="en hidden">Lasts how many days? <input type="text" size="3" placeholder="days"></label>
         </div>
         <div class="options-row">
           <label>色泽：<select><option value="">请选择</option><option>正常</option><option>色暗</option><option>色淡</option><option>鲜红</option><option>深红</option></select></label>
           <label><input type="checkbox"> 有紫黑血块</label>
+        <label class="en hidden"><input type="checkbox"> Dark blood clots</label>
           <label>经血量：<select><option value="">请选择</option><option>多</option><option>一般</option><option>少</option></select></label>
         </div>
         <div class="options-row">
           <label>白带多吗：<select><option value="">请选择</option><option>多</option><option>一般</option><option>少</option></select></label>
           <label>颜色：<select><option value="">请选择</option><option>白</option><option>黄</option><option>其他</option></select></label>
           <label><input type="checkbox"> 有异味</label>
+        <label class="en hidden"><input type="checkbox"> Has odor</label>
         </div>
-        <div class="text-group"><span class="visit-label">初诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">二诊</span><textarea></textarea></div>
-        <div class="text-group"><span class="visit-label">三诊</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">初诊</span>
+        <span class="visit-label en hidden">Initial Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">二诊</span>
+        <span class="visit-label en hidden">2nd Visit</span><textarea></textarea></div>
+        <div class="text-group"><span class="visit-label">三诊</span>
+        <span class="visit-label en hidden">3rd Visit</span><textarea></textarea></div>
       </div>
     </div>
 

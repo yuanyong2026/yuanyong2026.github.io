@@ -10,6 +10,12 @@
 <style>
 /* ── 症状咨询单样式 ── */
 /* 舌像拍摄指南 */
+#tongue-photo .q-header { display:flex; align-items:center; gap:.6rem; cursor:pointer; }
+#tongue-photo .q-header h3 { margin:0; }
+#tongue-photo .collapse-arrow { font-size:.9rem; color:#888; transition:transform .2s; }
+#tongue-photo .collapse-arrow.collapsed { transform:rotate(-90deg); }
+#tongue-content { transition:max-height .3s ease; overflow:hidden; }
+#tongue-content.collapsed { max-height:0; }
 .tongue-guide { line-height:2; padding-left:1.5rem; }
 .tongue-guide li { margin-bottom:.6rem; }
 .tongue-samples { margin-top:1rem; font-weight:600; color:#5b7a4c; }
@@ -101,8 +107,12 @@
 
   <!-- FAQ: 舌像拍摄 -->
   <div class="faq-item" id="tongue-photo">
-    <h3 class="zh">📸 如何拍摄舌像照片？</h3>
-    <h3 class="en hidden">📸 How to take tongue photos?</h3>
+    <div class="q-header" onclick="toggleTongueGuide()" title="点击折叠/展开">
+      <h3 class="zh">📸 如何拍摄舌像照片？</h3>
+      <h3 class="en hidden">📸 How to take tongue photos?</h3>
+      <span class="collapse-arrow" id="tongue-arrow">▼</span>
+    </div>
+    <div id="tongue-content">
     <ol class="zh tongue-guide">
       <li>关闭手机的<strong>"美颜"</strong>功能。</li>
       <li>上午9点—下午4点时间段（避开初升的朝阳和夕阳的黄光），在室外<strong>自然散光下</strong>（散光处，不要阳光直射处）用手机拍舌头的照片。</li>
@@ -127,6 +137,7 @@
       <li>Do not photograph the tongue immediately after waking up, or right after eating/drinking.</li>
     </ol>
     <p class="en hidden tongue-samples">Sample tongue photos:</p>
+    </div>
   </div>
 
   <!-- ═══════ 症状咨询单 ═══════ -->
@@ -563,8 +574,8 @@
   <div class="faq-item">
     <h3 class="zh">🌿 健康咨询+植物提取物，对健康有哪些辅助效果？有科学依据吗？</h3>
     <h3 class="en hidden">🌿 What supportive benefits do wellness consultations and herbal extracts offer? Is there scientific evidence?</h3>
-    <p class="zh">与其讲理论，不如看事实。袁大夫的281篇案例中，37篇附带三甲医院的西医检查报告前后对比——脂肪肝B超从重度转正常、尿毒症指标大幅下降、肿瘤指标回落等。这些是中国古老的自然疗法有效性的客观证据。当然，这种自然辅助健康的方法与西医的评判体系不同，我们建议您浏览案例库，自己判断。</p>
-    <p class="en hidden">Rather than theory, we let the evidence speak. Among Dr. Yuan's 281 cases, 37 include before/after lab reports from certified hospitals — fatty liver B-scans from severe to normal, kidney function markers showing dramatic improvement, tumor markers declining. We encourage you to browse the case library and draw your own conclusions.</p>
+    <p class="zh">与其讲理论，不如看事实。袁大夫的284篇案例中，37篇附带三甲医院的西医检查报告前后对比——脂肪肝B超从重度转正常、尿毒症指标大幅下降、肿瘤指标回落等。这些是中国古老的自然疗法有效性的客观证据。当然，这种自然辅助健康的方法与西医的评判体系不同，我们建议您浏览案例库，自己判断。</p>
+    <p class="en hidden">Rather than theory, we let the evidence speak. Among Dr. Yuan's 284 cases, 37 include before/after lab reports from certified hospitals — fatty liver B-scans from severe to normal, kidney function markers showing dramatic improvement, tumor markers declining. We encourage you to browse the case library and draw your own conclusions.</p>
   </div>
 
   <div class="faq-item">
@@ -620,6 +631,21 @@ function downloadQuestionnaire() {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+// ── 舌像指南折叠/展开 ──
+function toggleTongueGuide() {
+  var content = document.getElementById('tongue-content');
+  var arrow = document.getElementById('tongue-arrow');
+  if (content.classList.contains('collapsed')) {
+    content.classList.remove('collapsed');
+    content.style.maxHeight = content.scrollHeight + 'px';
+    arrow.classList.remove('collapsed');
+  } else {
+    content.classList.add('collapsed');
+    content.style.maxHeight = '0';
+    arrow.classList.add('collapsed');
+  }
 }
 
 // ── 下载舌像拍摄方案到本地（HTML含内嵌样片）──

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>病案库 — 袁大夫中医健康咨询</title>
+<title>案例库 — 袁大夫中医健康咨询</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <a href="index.html" class="logo">袁大夫 <span class="en">Dr. Yuan TCM</span></a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="cases.html" class="active">病案库</a>
+      <a href="cases.html" class="active">案例库</a>
       <a href="about.html">关于</a>
       <a href="faq.html">常见问题</a>
       <a href="index.html#appointment" class="btn-nav">预约咨询</a>
@@ -22,14 +22,14 @@
 </nav>
 
 <section class="cases-header">
-  <h1 class="zh">📂 病案库</h1>
+  <h1 class="zh">📂 案例库</h1>
   <h1 class="en hidden">📂 Case Library</h1>
-  <p class="zh">按疾病分类浏览284篇真实临床病案 · 点击标题查看全文</p>
+  <p class="zh">按疾病分类浏览284篇真实临床案例 · 点击标题查看全文</p>
   <p class="en hidden">Browse 284 real clinical case records by condition · Click title to read full case</p>
 </section>
 
 <div class="cases-toolbar" id="toolbar">
-  <input type="text" id="caseSearch" placeholder="搜索病案标题 / 输入病例号…" class="zh">
+  <input type="text" id="caseSearch" placeholder="搜索案例标题 / 输入病例号…" class="zh">
   <input type="text" id="caseSearchEn" placeholder="Search case title / enter case #..." class="en hidden">
   <select id="catFilter">
     <option value="" class="zh">全部疾病</option>
@@ -42,12 +42,12 @@
 
 <div id="caseDetail" style="display:none">
   <div class="case-detail">
-    <a href="#" class="back-link" onclick="backToList();return false"><span class="zh">← 返回病案列表</span><span class="en hidden">← Back to Case List</span></a>
+    <a href="#" class="back-link" onclick="backToList();return false"><span class="zh">← 返回案例列表</span><span class="en hidden">← Back to Case List</span></a>
     <h1 id="detailTitle"></h1>
     <div class="case-meta" id="detailMeta"></div>
     <div class="case-body" id="detailBody"></div>
     <br>
-    <a href="#" class="back-link" onclick="backToList();return false"><span class="zh">← 返回病案列表</span><span class="en hidden">← Back to Case List</span></a>
+    <a href="#" class="back-link" onclick="backToList();return false"><span class="zh">← 返回案例列表</span><span class="en hidden">← Back to Case List</span></a>
   </div>
 </div>
 

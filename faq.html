@@ -9,6 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ── 症状咨询单样式 ── */
+/* 舌像拍摄指南 */
+.tongue-guide { line-height:2; padding-left:1.5rem; }
+.tongue-guide li { margin-bottom:.6rem; }
+.tongue-samples { margin-top:1rem; font-weight:600; color:#5b7a4c; }
+.tongue-sample-img { margin:1rem 0; }
+.tongue-sample-img img { max-width:360px; width:100%; border:1px solid #ccc; border-radius:8px; display:block; }
 .questionnaire { max-width:900px; margin:2rem auto; background:#fafaf7; border:1px solid #e0dcd0; border-radius:12px; padding:2rem; }
 .questionnaire h2 { font-size:1.5rem; color:#5b7a4c; margin-bottom:.3rem; }
 .questionnaire .subtitle { color:#888; font-size:.9rem; margin-bottom:1.5rem; }
@@ -62,6 +68,8 @@
 .q-actions .btn-reset { background:#ccc; color:#333; }
 .q-actions .btn-send { background:#3a6b8c; }
 .q-actions .btn-download { background:#7b6e4c; }
+
+/* 舌像拍摄指南 */
 </style>
 </head>
 <body>
@@ -87,8 +95,38 @@
   <div class="faq-item">
     <h3 class="zh">❓ 远程咨询怎么进行？我需要做什么准备？</h3>
     <h3 class="en hidden">❓ How does telehealth work? What do I need?</h3>
-    <p class="zh">通过 Zoom 或微信视频进行。咨询前您需要：① 填写一份<a href="#symptom-questionnaire">症状咨询单</a>；② 在自然光下拍摄舌苔照片（正面）；③ 如果有近期的西医检查报告，一并发来。咨询当天，袁大夫会根据您的四诊信息进行中医辨证，给出个性化调理方案。</p>
-    <p class="en hidden">Via Zoom or WeChat video. Before the session: ① complete the <a href="#symptom-questionnaire">intake questionnaire</a>; ② take tongue photos in natural light (front); ③ send any recent lab reports. During the session, Dr. Yuan will perform TCM pattern differentiation and provide a personalized wellness plan.</p>
+    <p class="zh">通过 Zoom 或微信视频进行。咨询前您需要：① 填写一份<a href="#symptom-questionnaire">症状咨询单</a>；② 在自然光下<a href="#tongue-photo">拍摄舌苔照片</a>（正面）；③ 如果有近期的西医检查报告，一并发来。咨询当天，袁大夫会根据您的四诊信息进行中医辨证，给出个性化调理方案。</p>
+    <p class="en hidden">Via Zoom or WeChat video. Before the session: ① complete the <a href="#symptom-questionnaire">intake questionnaire</a>; ② <a href="#tongue-photo">take tongue photos</a> in natural light (front); ③ send any recent lab reports. During the session, Dr. Yuan will perform TCM pattern differentiation and provide a personalized wellness plan.</p>
+  </div>
+
+  <!-- FAQ: 舌像拍摄 -->
+  <div class="faq-item" id="tongue-photo">
+    <h3 class="zh">📸 如何拍摄舌像照片？</h3>
+    <h3 class="en hidden">📸 How to take tongue photos?</h3>
+    <ol class="zh tongue-guide">
+      <li>关闭手机的<strong>"美颜"</strong>功能。</li>
+      <li>上午9点—下午4点时间段（避开初升的朝阳和夕阳的黄光），在室外<strong>自然散光下</strong>（散光处，不要阳光直射处）用手机拍舌头的照片。</li>
+      <li>注意环境的背景色不能黑暗，避开绿色树荫以及各种彩色反光。</li>
+      <li>上衣穿<strong>白色</strong>，或者用大面积的白色毛巾围着颈胸部（不能穿深色或艳丽色，以免造成反光偏色）。</li>
+      <li>女性<strong>不要打口红</strong>，长头发要扎到头部后面去（以免头发的黑色反射到舌面）。</li>
+      <li>拍时头微微上仰，不能让舌头被额头遮拦光线。口腔张大、舌头自然放松后伸出，<strong>近距离对准口腔舌头</strong>（是对着口腔舌头，不是对着人脸），拍时点一下对着舌头的屏幕聚焦，出现焦光圆圈时再拍照。<br>多拍几张，自己选清晰的1-2张传来。达不到清晰的不能要（不要传来）。颈部白布是色彩参照物，必须拍成正白色。达不到前面说的效果必须重拍。也可同时录一段舌象视频来。</li>
+      <li>刚起床时和刚吃饭、吃东西后，不要立即拍舌象。</li>
+    </ol>
+    <p class="zh tongue-samples">舌象样片：</p>
+    <div class="zh tongue-sample-img"><img src="images/tongue-sample.jpg" alt="舌象样片"></div>
+    <div class="zh q-actions" style="margin-top:1rem;">
+      <button class="btn-download" onclick="downloadTongueGuide()">💾 下载拍摄方案到本地</button>
+    </div>
+    <ol class="en hidden tongue-guide">
+      <li>Turn off your phone's <strong>beauty filter</strong>.</li>
+      <li>Take photos between <strong>9 AM – 4 PM</strong> (avoid sunrise/sunset yellow light). Shoot outdoors under <strong>natural diffused light</strong> (shaded area, no direct sunlight).</li>
+      <li>Avoid dark backgrounds, green tree shade, and any colored reflections.</li>
+      <li>Wear <strong>white</strong> clothing, or cover your neck/chest with a large white towel (no dark or bright colors, to prevent color cast).</li>
+      <li>Women: <strong>no lipstick</strong>. Long hair should be tied back (to avoid black reflections on the tongue).</li>
+      <li>Tilt your head slightly up so the forehead doesn't cast a shadow on the tongue. Open mouth wide, extend the tongue naturally and relaxed. <strong>Aim the camera at the tongue inside the mouth</strong> (not the face). Tap the screen to focus on the tongue — wait for the focus circle before shooting.<br>Take multiple shots, pick 1-2 clearest ones. Blurry photos will not be accepted. The white cloth around your neck serves as a color reference and must appear pure white in the photo. Reshoot if needed. You may also record a short tongue video.</li>
+      <li>Do not photograph the tongue immediately after waking up, or right after eating/drinking.</li>
+    </ol>
+    <p class="en hidden tongue-samples">Sample tongue photos:</p>
   </div>
 
   <!-- ═══════ 症状咨询单 ═══════ -->
@@ -578,6 +616,50 @@ function downloadQuestionnaire() {
   var a = document.createElement('a');
   a.href = url;
   a.download = '症状咨询单_' + name + '.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ── 下载舌像拍摄方案到本地（HTML含内嵌样片）──
+function downloadTongueGuide() {
+  var img = document.querySelector('#tongue-photo .tongue-sample-img img');
+  var canvas = document.createElement('canvas');
+  canvas.width = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0);
+  var base64 = canvas.toDataURL('image/jpeg', 0.85);
+  var steps = [
+    '1、关闭手机的"美颜"功能。',
+    '2、上午9点—下午4点时间段（避开初升的朝阳和夕阳的黄光），在室外自然散光下（散光处，不要阳光直射处）用手机拍舌头的照片。',
+    '3、注意环境的背景色不能黑暗，避开绿色树荫以及各种彩色反光。',
+    '4、上衣穿白色，或者用大面积的白色毛巾围着颈胸部（不能穿深色或艳丽色，以免造成反光偏色）。',
+    '5、女性不要打口红，长头发要扎到头部后面去（以免头发的黑色反射到舌面）。',
+    '6、拍时头微微上仰，不能让舌头被额头遮拦光线。口腔张大、舌头自然放松后伸出，近距离对准口腔舌头（是对着口腔舌头，不是对着人脸），拍时点一下对着舌头的屏幕聚焦，出现焦光圆圈时再拍照。多拍几张，自己选清晰的1-2张传来。达不到清晰的不能要（不要传来）。颈部白布是色彩参照物，必须拍成正白色。达不到前面说的效果必须重拍。也可同时录一段舌象视频来。',
+    '7、刚起床时和刚吃饭、吃东西后，不要立即拍舌象。'
+  ];
+  var stepsHtml = steps.map(function(s){ return '<li>' + s + '</li>'; }).join('');
+  var html = '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>舌像拍摄方案 — 袁大夫中医</title>' +
+    '<style>body{font-family:"Noto Serif SC",serif,sans-serif;max-width:760px;margin:2rem auto;padding:1.5rem;line-height:2;color:#333;}' +
+    'h1{color:#5b7a4c;font-size:1.6rem;}ol{padding-left:1.5rem;}li{margin-bottom:.8rem;}' +
+    '.img-wrap{margin:1.5rem 0;text-align:center;}' +
+    '.img-wrap img{max-width:480px;width:100%;border:1px solid #ccc;border-radius:8px;}' +
+    '.footer{margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;color:#999;font-size:.85rem;}</style>' +
+    '</head><body>' +
+    '<h1>📸 舌像拍摄方案</h1>' +
+    '<p>请按以下步骤拍摄清晰的舌象照片，以保证中医辨证的准确性。</p>' +
+    '<ol>' + stepsHtml + '</ol>' +
+    '<h2>舌象样片</h2>' +
+    '<div class="img-wrap"><img src="' + base64 + '" alt="舌象样片"></div>' +
+    '<div class="footer">© 袁大夫中医健康咨询 · yuanyong2026.github.io</div>' +
+    '</body></html>';
+  var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = '舌像拍摄方案.html';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

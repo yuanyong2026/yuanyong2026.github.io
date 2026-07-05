@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>预约咨询 | 袁大夫 TCM Wellness</title>
-<meta name="description" content="选择您的远程中医健康咨询套餐，安全支付 · PayPal">
+<title>联系咨询 | 袁大夫 TCM Wellness</title>
+<meta name="description" content="联系袁大夫获取远程中医健康咨询方案及费用说明">
 <link rel="stylesheet" href="styles.css">
 <style>
   .booking-section { max-width: 800px; margin: 60px auto; padding: 0 20px; }
@@ -14,8 +14,6 @@
   .plan-grid { display: grid; gap: 24px; }
   .plan-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 28px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
   .plan-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
-  .plan-card.recommended { border: 2px solid var(--green); position: relative; }
-  .plan-card.recommended::before { content: "✦ 推荐 Recommended"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--green); color: white; font-size: 12px; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
   
   .plan-icon { font-size: 40px; margin-bottom: 12px; }
   .plan-name { font-size: 18px; font-weight: 700; color: var(--dark); }
@@ -25,13 +23,6 @@
   .plan-desc ul { list-style: none; padding: 0; text-align: left; display: inline-block; }
   .plan-desc ul li { padding: 4px 0; }
   .plan-desc ul li::before { content: "✓ "; color: var(--green); font-weight: 700; }
-  
-  .pay-btn { display: inline-block; background: var(--green); color: white; padding: 14px 48px; border-radius: 8px; font-size: 16px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
-  .pay-btn:hover { background: var(--green-light); }
-
-  .pay-methods { text-align: center; margin-top: 40px; padding: 24px; background: var(--cream); border-radius: var(--radius); }
-  .pay-methods h4 { color: var(--dark); margin-bottom: 8px; }
-  .pay-methods p { font-size: 13px; color: var(--gray); }
 
   .note-box { background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-top: 32px; font-size: 13px; color: #856404; }
   .note-box .en { color: #856404; }
@@ -48,82 +39,52 @@
       <a href="cases.html">案例库</a>
       <a href="about.html">关于</a>
       <a href="faq.html">常见问题</a>
-      <a href="booking.html" class="btn-nav active">预约 / Book</a>
+      <a href="mailto:folk.tcm.yuanyong26@gmail.com" class="btn-nav">联系</a>
       <button id="langToggle" onclick="toggleLang()" class="lang-btn">EN</button>
     </div>
   </div>
 </nav>
 
 <div class="booking-section">
-  <h2 class="zh">📅 选择您的咨询套餐</h2>
-  <h2 class="en hidden">📅 Select Your Consultation Package</h2>
-  <p class="booking-subtitle zh">安全支付 · PayPal | 付款后 24 小时内邮件确认咨询时间</p>
-  <p class="booking-subtitle en hidden">Secure payment via PayPal · Consultation time confirmed within 24 hours via email</p>
+  <h2 class="zh">📅 联系咨询</h2>
+  <h2 class="en hidden">📅 Get in Touch</h2>
+  <p class="booking-subtitle zh">欢迎发送邮件或通过微信联系，我会根据您的情况给出具体方案及费用。<br>不需要在此页面支付任何费用。</p>
+  <p class="booking-subtitle en hidden">Feel free to reach out via email or WeChat. I'll review your case and reply with a plan and fee estimate.<br>No payment is required on this page.</p>
 
   <div class="plan-grid">
-    <!-- Tier 1: 初诊 -->
+    <!-- 远程视频咨询 -->
     <div class="plan-card">
       <div class="plan-icon">🌿</div>
-      <div class="plan-name">初诊 <span class="en">Initial Consultation</span></div>
-      <div class="plan-price">$80 <span style="font-size:14px;color:var(--gray)">USD</span></div>
+      <div class="plan-name">远程视频咨询 <span class="en">Video Consultation</span></div>
       <div class="plan-desc">
         <ul>
           <li class="zh">完整四诊（问诊/舌诊/辨证）</li><li class="en hidden">Full intake + tongue diagnosis + TCM pattern differentiation</li>
-          <li class="zh">详尽健康问卷</li><li class="en hidden">Comprehensive health questionnaire</li>
-          <li class="zh">个性化调理方案</li><li class="en hidden">Personalized wellness plan</li>
+          <li class="zh">填写症状咨询单</li><li class="en hidden">Complete symptom questionnaire</li>
+          <li class="zh">个性化调理方案 + 配方</li><li class="en hidden">Personalized wellness plan + prescription</li>
           <li class="zh">约 45 分钟视频/语音</li><li class="en hidden">~45 min video/audio consultation</li>
         </ul>
       </div>
-      <a href="https://paypal.me/yuanyong2026/80" target="_blank" class="pay-btn zh">立即预约 · $80</a>
-      <a href="https://paypal.me/yuanyong2026/80" target="_blank" class="pay-btn en hidden">Book Now · $80</a>
     </div>
 
-    <!-- Tier 2: 复诊 -->
-    <div class="plan-card recommended">
-      <div class="plan-icon">🔄</div>
-      <div class="plan-name">复诊 <span class="en">Follow-up Consultation</span></div>
-      <div class="plan-price">$50 <span style="font-size:14px;color:var(--gray)">USD</span></div>
-      <div class="plan-desc">
-        <ul>
-          <li class="zh">疗效反馈与评估</li><li class="en hidden">Progress review & assessment</li>
-          <li class="zh">处方/方案调整</li><li class="en hidden">Formula & plan adjustment</li>
-          <li class="zh">后续调理建议</li><li class="en hidden">Ongoing wellness guidance</li>
-          <li class="zh">约 20 分钟视频/语音</li><li class="en hidden">~20 min video/audio consultation</li>
-        </ul>
-      </div>
-      <a href="https://paypal.me/yuanyong2026/50" target="_blank" class="pay-btn zh">立即预约 · $50</a>
-      <a href="https://paypal.me/yuanyong2026/50" target="_blank" class="pay-btn en hidden">Book Now · $50</a>
-    </div>
-
-    <!-- Tier 3: 季度 -->
+    <!-- 文字咨询 -->
     <div class="plan-card">
-      <div class="plan-icon">📦</div>
-      <div class="plan-name">季度调理 <span class="en">3-Month Wellness Plan</span></div>
-      <div class="plan-price">$200 <span style="font-size:14px;color:var(--gray)">USD</span></div>
+      <div class="plan-icon">📝</div>
+      <div class="plan-name">文字咨询 <span class="en">Text Consultation</span></div>
       <div class="plan-desc">
         <ul>
-          <li class="zh">一次初诊 + 每月复诊</li><li class="en hidden">1 initial + monthly follow-ups</li>
-          <li class="zh">专属案例追踪</li><li class="en hidden">Personalized case tracking</li>
-          <li class="zh">随时文字咨询</li><li class="en hidden">Unlimited text consultation</li>
-          <li class="zh">省 $40（对比单次购买）</li><li class="en hidden">Save $40 vs. individual bookings</li>
+          <li class="zh">填写症状咨询单即可</li><li class="en hidden">Complete intake form only</li>
+          <li class="zh">无需视频，时间灵活</li><li class="en hidden">No video needed, flexible timing</li>
+          <li class="zh">电子文字配方提供</li><li class="en hidden">Electronic prescription delivery</li>
+          <li class="zh">中草药自购 / 我方邮寄</li><li class="en hidden">Source herbs locally or order from us</li>
         </ul>
       </div>
-      <a href="https://paypal.me/yuanyong2026/200" target="_blank" class="pay-btn zh">立即预约 · $200</a>
-      <a href="https://paypal.me/yuanyong2026/200" target="_blank" class="pay-btn en hidden">Book Now · $200</a>
     </div>
   </div>
 
-  <div class="pay-methods">
-    <h4 class="zh">💰 支付方式 / Payment</h4>
-    <h4 class="en hidden">💰 Payment Methods</h4>
-    <p class="zh">PayPal 支持 Visa、MasterCard、美国运通、Discover 及 PayPal 余额支付<br>安全加密 · 即时到账</p>
-    <p class="en hidden">PayPal accepts Visa, MasterCard, Amex, Discover & PayPal balance<br>SSL encrypted · Instant confirmation</p>
-  </div>
-
-  <div class="note-box">
-    <strong class="zh">📌 付款后</strong><strong class="en hidden">📌 After Payment</strong><br>
-    <span class="zh">请保留 PayPal 交易号，发送邮件至 folk.tcm.yuanyong26@gmail.com，注明：姓名 / 联系方式 / 案例编号（若有）/ 方便的时区及时间。</span>
-    <span class="en hidden">Please keep your PayPal transaction ID and email folk.tcm.yuanyong26@gmail.com with: Name / Contact / Case # (if any) / Preferred time zone & availability.</span>
+  <div class="note-box" style="text-align:center; margin-top:2rem;">
+    <strong class="zh">📌 下一步</strong><strong class="en hidden">📌 Next Step</strong><br>
+    <span class="zh">发送邮件至 <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a>，注明：姓名 / 主要症状 / 所在国家 / 方便联系的时间。<br>收到后会尽快回复您具体的方案建议及费用。</span>
+    <span class="en hidden">Email <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a> with: Name / Main symptoms / Country / Preferred contact time.<br>I'll reply with a specific plan and fee estimate.</span>
   </div>
 </div>
 
@@ -138,12 +99,11 @@
       <h4 class="zh">快速链接</h4><h4 class="en hidden">Quick Links</h4>
       <a href="index.html">首页 / Home</a>
       <a href="cases.html">案例库 / Cases</a>
-      <a href="booking.html">预约 / Book</a>
+      <a href="mailto:folk.tcm.yuanyong26@gmail.com">联系 / Contact</a>
     </div>
     <div class="footer-col">
       <h4 class="zh">联系方式</h4><h4 class="en hidden">Contact</h4>
       <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a>
-      <p><a href="https://paypal.me/yuanyong2026">paypal.me/yuanyong2026</a></p>
     </div>
   </div>
   <div class="footer-bottom">

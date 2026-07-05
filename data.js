@@ -1,4 +1,4 @@
-// Dr. Yuan TCM Case Data - Full Edition with Local Images
+﻿// Dr. Yuan TCM Case Data - Full Edition with Local Images
 var CASE_DATA = {
   "categories": [
     {
@@ -16488,6 +16488,63 @@ var CASE_DATA = {
         "Before treatment: Hospital examination, January 2026 — multiple gallstones, diameter 0.6 cm.",
         "After treatment: B-ultrasound follow-up, May 2026 — stones gone; only cholesterol crystals remain."
       ]
+    },
+    {
+      "id": 285,
+      "title": "8岁男童6年自汗+过敏性鼻炎 6周显著改善",
+      "titleEn": "6 Years of Severe Spontaneous Sweating & Allergic Rhinitis — Significant Improvement After 6 Weeks of TCM",
+      "tags": [
+        "pediatric",
+        "respiratory"
+      ],
+      "hasReports": false,
+      "body": [
+        "【背景】本案出自师传临床实践。患者为一名8岁男童（籍贯广东中山），主诉严重自汗（白天不自主出汗）长达6年，并伴有过敏性鼻炎病史4年。",
+        "",
+        "【缘起（关键背景）】据患儿母亲回忆，问题的根源始于孩子2岁半时的新冠疫情封控期间。当时孩子突发高烧，因就医困难，家里连续三天服用布洛芬颗粒（Motrin/Ibuprofen）强行发汗退热。虽然烧退了，但这种过激的发汗方式严重损伤了孩子的卫气（Wei Qi）。从此以后，孩子变得极易出汗（即使不动也一身汗），且反复感冒。等到上幼儿园时，空调的冷风加上本就虚弱的免疫力，导致他每个月都会发烧咳嗽，不得不连续服用了一年抗生素和西药消炎药。最终演变成慢性鼻炎和腺样体肥大。",
+        "",
+        "【初诊（2026年5月23日）】出汗：极其严重。爬楼或吃饭后头发如刚洗过般滴水，一天需换多件衣服，夜间盗汗。鼻炎：晨起清涕、鼻塞、眼痒、打喷嚏，已现腺样体面容。辨证：肺气虚，卫表不固，兼脾气虚（食欲不振、偶腹痛、挑食）。治则：固表止汗，补益肺脾之气，收敛津液。",
+        "",
+        "【第1周 5月30日】出汗改善。头发保持干爽，换衣次数减少。仍有吸鼻子，空调房鼻塞。腹痛。",
+        "",
+        "【第2周 6月7日】背部有汗但头发仅潮湿不滴水。重大转机：不打呼噜，夜间呼吸安静。食欲稍好转。",
+        "",
+        "【第4周 6月19日】运动仍大汗但无滴水。偶眼痒。大便稀溏，足跟痛（后自愈）。",
+        "",
+        "【第6周 7月5日】里程碑：头发呈毛巾擦干后的半湿粘腻状，不再滴水。晨起仍有鼻塞流涕，但夜间通气顺畅。大便仍稀溏，偶腹痛。",
+        "",
+        "【排病反应】约第2周全身起痱子伴瘙痒。中医视为郁热外透之象，未作处理两周内自退。",
+        "",
+        "【当前状态】6周调理后，最显著改善：彻底消除滴水样出汗及夜间打呼噜、鼻塞。体质明显增强，目前继续巩固调理，重点处理残留晨起鼻炎和脾虚（便溏）。",
+        "",
+        "【按语】本案例揭示儿童时期滥用布洛芬强行发汗如何导致终生卫气溃散。未用抗组胺药压制症状，而是通过重建肺脾功能、固护卫表，帮助身体恢复正常的开阖机制。",
+        "",
+        "本文由师传中医师分享，仅供医学交流与教育参考，不作为具体诊疗依据。"
+      ],
+      "bodyEn": [
+        "Background: A case from my family practice. An 8-year-old boy (Zhongshan, Guangdong) with a 6-year history of severe spontaneous sweating (Zi Han) and 4-year history of allergic rhinitis.",
+        "",
+        "The Origin Story: According to the mother, the issues began when the child was 2.5 years old during the COVID-19 pandemic. He had a high fever, and due to limited access to doctors, the family administered ibuprofen granules three days in a row to force a sweat. While the fever subsided, this aggressive diaphoresis severely damaged his defensive Qi (Wei Qi). From that moment, he began sweating profusely (even without movement) and caught colds easily. Kindergarten AC exposure plus weak immunity led to monthly fever/cough, requiring a year of antibiotics and anti-inflammatory drugs. This evolved into chronic rhinitis and adenoid hypertrophy.",
+        "",
+        "Initial Presentation (May 23, 2026): Sweating: Profuse. Hair dripping after climbing stairs or eating. Multiple shirt changes daily. Night sweats. Rhinitis: Morning clear nasal discharge, congestion, itchy eyes, sneezing. Adenoidal facies present. TCM Pattern: Lung Qi Deficiency failing to secure the exterior, compounded by Spleen Qi deficiency (poor appetite, occasional abdominal pain, picky eating). Treatment Principle: Stabilize the Exterior, Tonify Lung and Spleen Qi, Astringe Sweat.",
+        "",
+        "Week 1 (May 30): Sweating improved. Hair stays dry. Fewer shirt changes. Still sniffling. Nasal congestion in AC. Belly pain.",
+        "",
+        "Week 2 (June 7): Back sweaty, but hair is damp, not dripping. Major change: No snoring. Silent breathing at night. Appetite slightly better.",
+        "",
+        "Week 4 (June 19): Exercise still causes heavy sweat, but no dripping. Occasional eye itch. Loose stools. Heel pain (resolved later).",
+        "",
+        "Week 6 (July 5): Milestone: Hair is just sticky-wet like after a towel dry. No dripping. Morning congestion persists, but no night blockage. Loose stools persist. Belly pain.",
+        "",
+        "Healing Crisis: Around week 2, the child developed heat rash (Fen Zi) and itchy skin. In TCM, this is often seen as the body expelling latent heat or toxins to the surface after the interior is stabilized. The rash resolved naturally within two weeks.",
+        "",
+        "Current Status: After 6 weeks, the most dramatic change is the cessation of dripping sweat and the resolution of snoring/night congestion. The child's constitution is clearly strengthening. We are continuing to address residual morning rhinitis and spleen deficiency (loose stools).",
+        "",
+        "Discussion: This case highlights how early childhood forced sweating (especially with NSAIDs/Ibuprofen) can create a lifelong pattern of Wei Qi collapse. Rather than suppressing symptoms with antihistamines, we focused on rebuilding the Lung and Spleen to secure the exterior.",
+        "",
+        "Shared by a hereditary TCM practitioner. This is an observational case study for educational purposes only."
+      ]
     }
   ]
 };
+

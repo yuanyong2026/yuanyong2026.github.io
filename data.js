@@ -349,9 +349,7 @@ var CASE_DATA = {
         "2013.6.25 二诊：自述头痛已完全好完，问还有其他不适吗？答没有了。一摸脉，还有弱感。问胸闷气短还有吗？答：还微有点。",
         "说，上周的药还有一天的没有吃完，因工作太忙，没法按时服药。说现在不想再继续服了，就想您给指点一下需要如何注意以后的问题。我说：最大一个问题是：注意休养，你这病的重点在于心肺虚弱，导致的头部供血不足而疼痛。操劳过度直接伤心，还可能导致复发的。建议继续服些中药，但拒绝接受。只好再给讲了一些生活上注意多保养的方案！"
       ],
-      "images": [
-        "img/case_6_1.jpeg"
-      ],
+      "images": [],
       "bodyEn": [
         "Guo XX, female, 28 years old, wife of a friend. Introduced by her husband to see me. June 16, 2013 — First visit:",
         "Chief complaint: Headache (bilateral and vertex pain) for about one week. Western medicine provided no relief. Further inquiry revealed: excessive thirst and drinking, irritability and restlessness, chest tightness and shortness of breath, discomfort in the cardiac region, fatigue, drowsiness. Appetite fair. Tongue pale red and tender with white coating. Pulse weak. History of pulmonary tuberculosis.",

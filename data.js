@@ -16498,6 +16498,12 @@ var CASE_DATA = {
         "respiratory"
       ],
       "hasReports": false,
+      "images": [
+        "img/case_285_1.png"
+      ],
+      "videos": [
+        "img/case_285_1.mp4"
+      ],
       "body": [
         "【背景】本案出自师传临床实践。患者为一名8岁男童（籍贯广东中山），主诉严重自汗（白天不自主出汗）长达6年，并伴有过敏性鼻炎病史4年。",
         "",

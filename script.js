@@ -183,15 +183,20 @@ function showCase(id) {
     return '<p>' + line.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>';
   }).join('');
 
-  // Add images if present
+  // Add images/videos if present
   var images = c.images || [];
-  if (images.length > 0) {
-    var sectionTitle = isEn() ? '📸 Reports / Images' : '📸 报告/图片';
+  var videos = c.videos || [];
+  var hasMedia = images.length > 0 || videos.length > 0;
+  if (hasMedia) {
+    var sectionTitle = isEn() ? '📸 Reports / Media' : '📸 报告/图片/视频';
     var altText = isEn() ? 'Medical report image' : '报告图片';
     var errText = isEn() ? 'Image failed to load: ' : '图片加载失败: ';
     html += '<div class="case-images"><h3>' + sectionTitle + '</h3>';
     images.forEach(function(src) {
       html += '<a href="' + src + '" target="_blank"><img src="' + src + '" alt="' + altText + '" loading="lazy" onerror="this.style.border=\'2px solid red\'; this.alt=\'' + errText + src + '\';" style="max-width:100%; margin:8px 0; border:1px solid #ddd; border-radius:8px; cursor:pointer" /></a>';
+    });
+    videos.forEach(function(src) {
+      html += '<div style="margin:12px 0;"><video controls style="max-width:100%; border-radius:8px;" preload="metadata"><source src="' + src + '" type="video/mp4">' + (isEn() ? 'Your browser does not support video playback.' : '您的浏览器不支持视频播放。') + '</video></div>';
     });
     html += '</div>';
   }

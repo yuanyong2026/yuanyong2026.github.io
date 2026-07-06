@@ -1,33 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>联系咨询 | 袁大夫 TCM Wellness</title>
-<meta name="description" content="联系袁大夫获取远程中医健康咨询方案及费用说明">
+<meta name="description" content="联系袁大夫获取远程中医健康咨询方案">
 <link rel="stylesheet" href="styles.css">
 <style>
   .booking-section { max-width: 800px; margin: 60px auto; padding: 0 20px; }
   .booking-section h2 { text-align: center; color: var(--green); margin-bottom: 8px; }
   .booking-subtitle { text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 14px; }
   
-  .plan-grid { display: grid; gap: 24px; }
-  .plan-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 28px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
-  .plan-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
-  
-  .plan-icon { font-size: 40px; margin-bottom: 12px; }
-  .plan-name { font-size: 18px; font-weight: 700; color: var(--dark); }
-  .plan-name .en { font-size: 13px; color: var(--gray); font-weight: 400; margin-top: 2px; }
-  .plan-price { font-size: 32px; font-weight: 700; color: var(--green); margin: 16px 0 4px; }
-  .plan-desc { font-size: 13px; color: var(--gray); line-height: 1.8; margin: 12px 0 20px; }
-  .plan-desc ul { list-style: none; padding: 0; text-align: left; display: inline-block; }
-  .plan-desc ul li { padding: 4px 0; }
-  .plan-desc ul li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+  .flow-steps { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 36px; margin-bottom: 32px; }
+  .flow-steps h3 { color: var(--green); margin-bottom: 20px; font-size: 1.1rem; }
+  .flow-steps ol { padding-left: 1.5rem; line-height: 2.2; }
+  .flow-steps ol li { margin-bottom: 8px; }
 
-  .note-box { background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-top: 32px; font-size: 13px; color: #856404; }
-  .note-box .en { color: #856404; }
+  .contact-box { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 36px; text-align: center; }
+  .contact-box h3 { color: var(--green); margin-bottom: 16px; font-size: 1.1rem; }
+  .contact-box p { line-height: 2.2; margin-bottom: 8px; }
+  .contact-box a { color: var(--green); text-decoration: underline; }
 
-  @media (max-width: 600px) { .plan-grid { gap: 16px; } }
+  @media (max-width: 600px) { .flow-steps, .contact-box { padding: 24px 20px; } }
 </style>
 </head>
 <body>
@@ -48,43 +42,31 @@
 <div class="booking-section">
   <h2 class="zh">📅 联系咨询</h2>
   <h2 class="en hidden">📅 Get in Touch</h2>
-  <p class="booking-subtitle zh">欢迎发送邮件或通过微信联系，我会根据您的情况给出具体方案及费用。<br>不需要在此页面支付任何费用。</p>
-  <p class="booking-subtitle en hidden">Feel free to reach out via email or WeChat. I'll review your case and reply with a plan and fee estimate.<br>No payment is required on this page.</p>
+  <p class="booking-subtitle zh">欢迎通过邮件或微信联系，说明您的情况后我会给出具体方案建议。</p>
+  <p class="booking-subtitle en hidden">Feel free to reach out via email or WeChat. I'll review your case and reply with recommendations.</p>
 
-  <div class="plan-grid">
-    <!-- 远程视频咨询 -->
-    <div class="plan-card">
-      <div class="plan-icon">🌿</div>
-      <div class="plan-name">远程视频咨询 <span class="en">Video Consultation</span></div>
-      <div class="plan-desc">
-        <ul>
-          <li class="zh">完整四诊（问诊/舌诊/辨证）</li><li class="en hidden">Full intake + tongue diagnosis + TCM pattern differentiation</li>
-          <li class="zh">填写症状咨询单</li><li class="en hidden">Complete symptom questionnaire</li>
-          <li class="zh">个性化调理方案 + 配方</li><li class="en hidden">Personalized wellness plan + prescription</li>
-          <li class="zh">约 45 分钟视频/语音</li><li class="en hidden">~45 min video/audio consultation</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 文字咨询 -->
-    <div class="plan-card">
-      <div class="plan-icon">📝</div>
-      <div class="plan-name">文字咨询 <span class="en">Text Consultation</span></div>
-      <div class="plan-desc">
-        <ul>
-          <li class="zh">填写症状咨询单即可</li><li class="en hidden">Complete intake form only</li>
-          <li class="zh">无需视频，时间灵活</li><li class="en hidden">No video needed, flexible timing</li>
-          <li class="zh">电子文字配方提供</li><li class="en hidden">Electronic prescription delivery</li>
-          <li class="zh">中草药自购 / 我方邮寄</li><li class="en hidden">Source herbs locally or order from us</li>
-        </ul>
-      </div>
-    </div>
+  <div class="flow-steps">
+    <h3 class="zh">📋 一般流程</h3>
+    <h3 class="en hidden">📋 General Process</h3>
+    <ol>
+      <li class="zh">您先填写症状咨询单，拍照发给我。</li>
+      <li class="en hidden">Complete the symptom questionnaire and send it over.</li>
+      <li class="zh">收到后我会初步判断，根据您的具体情况给出方案建议。</li>
+      <li class="en hidden">After review, I'll provide an initial assessment and plan based on your condition.</li>
+      <li class="zh">双方确认方案后再进入正式咨询流程。</li>
+      <li class="en hidden">Once we agree on the plan, we proceed with the formal consultation.</li>
+    </ol>
   </div>
 
-  <div class="note-box" style="text-align:center; margin-top:2rem;">
-    <strong class="zh">📌 下一步</strong><strong class="en hidden">📌 Next Step</strong><br>
-    <span class="zh">发送邮件至 <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a>，注明：姓名 / 主要症状 / 所在国家 / 方便联系的时间。<br>收到后会尽快回复您具体的方案建议及费用。</span>
-    <span class="en hidden">Email <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a> with: Name / Main symptoms / Country / Preferred contact time.<br>I'll reply with a specific plan and fee estimate.</span>
+  <div class="contact-box">
+    <h3 class="zh">📬 联系方式</h3>
+    <h3 class="en hidden">📬 Contact Info</h3>
+    <p class="zh">邮箱：<a href="mailto:yywyyw18@163.com">yywyyw18@163.com</a> &nbsp;|&nbsp; <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a></p>
+    <p class="en hidden">Email: <a href="mailto:yywyyw18@163.com">yywyyw18@163.com</a> &nbsp;|&nbsp; <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a></p>
+    <p class="zh">微信：<strong>yDF357522452</strong></p>
+    <p class="en hidden">WeChat: <strong>yDF357522452</strong></p>
+    <p class="zh" style="color:var(--gray); font-size:13px; margin-top:12px;">我会尽快回复您。</p>
+    <p class="en hidden" style="color:var(--gray); font-size:13px; margin-top:12px;">I'll get back to you as soon as possible.</p>
   </div>
 </div>
 
@@ -103,6 +85,7 @@
     </div>
     <div class="footer-col">
       <h4 class="zh">联系方式</h4><h4 class="en hidden">Contact</h4>
+      <a href="mailto:yywyyw18@163.com">yywyyw18@163.com</a>
       <a href="mailto:folk.tcm.yuanyong26@gmail.com">folk.tcm.yuanyong26@gmail.com</a>
     </div>
   </div>

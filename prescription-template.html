@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中医处方 — 袁大夫 TCM Prescription</title>
+<style>
+  @page { size: A4; margin: 15mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Serif SC", "Times New Roman", serif;
+    color: #222; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto;
+  }
+  .no-print { display: none; }
+  @media screen {
+    .no-print { display: block; text-align: center; margin-bottom: 20px; }
+    body { background: #f5f5f0; padding-top: 40px; }
+    .prescription { background: #fff; padding: 40px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); border-radius: 8px; }
+  }
+  .header {
+    text-align: center; border-bottom: 3px solid #2d5f3f; padding-bottom: 16px; margin-bottom: 24px;
+  }
+  .header h1 { font-size: 24px; color: #2d5f3f; letter-spacing: 2px; }
+  .header .subtitle { font-size: 14px; color: #888; margin-top: 4px; }
+  .doctor-info { font-size: 13px; color: #555; margin-top: 8px; }
+  .patient-box {
+    display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 20px;
+    padding: 16px 20px; background: #f9f9f5; border-radius: 6px; font-size: 14px;
+  }
+  .patient-box span { flex: 1; min-width: 140px; }
+  .patient-box label { color: #888; margin-right: 6px; }
+  .patient-box b { color: #222; }
+  .zheng {
+    margin-bottom: 20px; padding: 12px 20px; border-left: 4px solid #2d5f3f;
+    background: #f3f8f4; border-radius: 0 6px 6px 0;
+  }
+  .zheng .label { font-size: 13px; color: #2d5f3f; font-weight: 600; }
+  .zheng .content { font-size: 15px; margin-top: 4px; }
+  .zheng .en { font-size: 13px; color: #666; font-style: italic; margin-top: 2px; }
+
+  table.herb-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;
+  }
+  table.herb-table th {
+    background: #2d5f3f; color: #fff; padding: 10px 8px; font-weight: 600; font-size: 13px;
+  }
+  table.herb-table td {
+    padding: 8px; border-bottom: 1px solid #e0e0d8; vertical-align: top;
+  }
+  table.herb-table tbody tr:nth-child(even) { background: #f9f9f5; }
+  .herb-zh { font-weight: 600; }
+  .herb-en { color: #666; font-size: 12px; font-style: italic; }
+  .herb-dose { text-align: center; white-space: nowrap; }
+  .herb-role { font-size: 12px; color: #888; }
+  .dose-column { width: 90px; }
+
+  .instructions {
+    margin-bottom: 20px; padding: 16px 20px; background: #fff8f0;
+    border: 1px solid #e8d8c0; border-radius: 6px;
+  }
+  .instructions h3 { color: #8b5a2b; font-size: 16px; margin-bottom: 8px; }
+  .instructions ol { margin-left: 20px; }
+  .instructions li { margin-bottom: 4px; font-size: 14px; }
+  .instructions .en { font-size: 13px; color: #666; }
+
+  .notes {
+    margin-bottom: 20px; padding: 12px 20px; background: #fff0f0;
+    border: 1px solid #e8c0c0; border-radius: 6px; font-size: 13px;
+  }
+  .notes h3 { color: #c0392b; font-size: 15px; margin-bottom: 6px; }
+  .notes ul { margin-left: 20px; }
+
+  .sign {
+    margin-top: 30px; display: flex; justify-content: space-between;
+    padding-top: 16px; border-top: 1px solid #ddd; font-size: 13px;
+  }
+  .sign .date { color: #888; }
+  .sign .seal { text-align: right; }
+  .sign .seal b { color: #2d5f3f; font-size: 16px; }
+
+  .footer-note {
+    text-align: center; font-size: 11px; color: #aaa; margin-top: 20px;
+    padding-top: 12px; border-top: 1px dashed #ddd;
+  }
+</style>
+</head>
+<body>
+
+<div class="no-print">
+  <p style="color:#888;">📋 处方模板填写后可直接打印（Ctrl+P）或转为 PDF 发给患者</p>
+</div>
+
+<div class="prescription">
+
+  <!-- ═══════ 头部 ═══════ -->
+  <div class="header">
+    <h1>古法度本草 · 袁大夫中医处方</h1>
+    <div class="subtitle">FOLK TCM · Dr. Yuan's Herbal Prescription</div>
+    <div class="doctor-info">
+      袁大夫 · 40年临床经验 · 远程中医调理<br>
+      Email: folk.tcm.yuanyong26@gmail.com · Website: yuanyong2026.github.io
+    </div>
+  </div>
+
+  <!-- ═══════ 患者信息 ═══════ -->
+  <div class="patient-box">
+    <span><label>姓名 / Name:</label><b>_______________</b></span>
+    <span><label>性别 / Sex:</label><b>____</b></span>
+    <span><label>年龄 / Age:</label><b>____</b></span>
+    <span><label>日期 / Date:</label><b>____________</b></span>
+    <span><label>城市 / City:</label><b>_______________</b></span>
+    <span><label>编号 / ID:</label><b>____________</b></span>
+  </div>
+
+  <!-- ═══════ 辨证 ═══════ -->
+  <div class="zheng">
+    <div class="label">辨证 TCM Pattern Differentiation</div>
+    <div class="content">_______________（填写中医辨证，如：肺脾气虚，湿浊阻窍）</div>
+    <div class="en">_______________（英文，如：Lung & Spleen Qi deficiency, damp obstruction in nasal passages）</div>
+  </div>
+
+  <!-- ═══════ 处方药表 ═══════ -->
+  <table class="herb-table">
+    <thead>
+      <tr>
+        <th>序号<br><small>No.</small></th>
+        <th>药材 / Herb</th>
+        <th>(学名 / Latin Name)</th>
+        <th class="dose-column">剂量<br><small>Dose (g)</small></th>
+        <th>功效 / Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td class="herb-zh">黄芪</td><td class="herb-en">Huang Qi / Astragalus membranaceus</td><td class="herb-dose">___</td><td class="herb-role">补气</td></tr>
+      <tr><td>2</td><td class="herb-zh">白术</td><td class="herb-en">Bai Zhu / Atractylodes macrocephala</td><td class="herb-dose">___</td><td class="herb-role">健脾</td></tr>
+      <tr><td>3</td><td class="herb-zh">防风</td><td class="herb-en">Fang Feng / Saposhnikovia divaricata</td><td class="herb-dose">___</td><td class="herb-role">祛风</td></tr>
+      <tr><td>4</td><td class="herb-zh">辛夷</td><td class="herb-en">Xin Yi / Magnolia biondii</td><td class="herb-dose">___</td><td class="herb-role">通鼻窍</td></tr>
+      <tr><td>5</td><td class="herb-zh">苍耳子</td><td class="herb-en">Cang Er Zi / Xanthium sibiricum</td><td class="herb-dose">___</td><td class="herb-role">通鼻窍</td></tr>
+      <tr><td>6</td><td class="herb-zh">白芷</td><td class="herb-en">Bai Zhi / Angelica dahurica</td><td class="herb-dose">___</td><td class="herb-role">通鼻窍</td></tr>
+      <tr><td>7</td><td class="herb-zh">薄荷</td><td class="herb-en">Bo He / Mentha haplocalyx</td><td class="herb-dose">___</td><td class="herb-role">疏散风热</td></tr>
+      <tr><td>8</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+      <tr><td>9</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+      <tr><td>10</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+      <tr><td>11</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+      <tr><td>12</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+      <tr><td>13</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+      <tr><td>14</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+      <tr><td>15</td><td class="herb-zh">___</td><td class="herb-en">___</td><td class="herb-dose">___</td><td class="herb-role">___</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════ 服法 ═══════ -->
+  <div class="instructions">
+    <h3>📝 煎服法 / Preparation & Dosage</h3>
+    <ol>
+      <li><strong>汤剂煎服 / Decoction:</strong> 每日一剂，水煎两次，合并药汁，分早晚两次温服。<br><span class="en">One packet daily. Simmer twice, combine the liquid, take warm morning and evening.</span></li>
+      <li><strong>粉剂冲服 / Herbal Powder:</strong> 每次一匙（约3-5g），温水冲服，每日两次，早晚各一次。<br><span class="en">One spoon (approx. 3-5g) mixed in warm water, twice daily (morning and evening).</span></li>
+      <li><strong>疗程 / Duration:</strong> 连服 ___ 天后复诊，根据舌象和症状变化调方。<br><span class="en">Take for ___ days, then follow up for formula adjustment based on tongue and symptoms.</span></li>
+    </ol>
+  </div>
+
+  <!-- ═══════ 注意事项 ═══════ -->
+  <div class="notes">
+    <h3>⚠️ 注意事项 / Precautions</h3>
+    <ul>
+      <li>服药期间忌生冷、辛辣、油腻之物。<br><span class="en">Avoid raw, cold, spicy, and greasy food during treatment.</span></li>
+      <li>孕妇、哺乳期女性请告知医师。<br><span class="en">Inform the practitioner if pregnant or breastfeeding.</span></li>
+      <li>如出现不适，暂停服药并联系医师。<br><span class="en">If discomfort occurs, stop and contact the practitioner.</span></li>
+      <li>本处方为个人辨证用药，请勿与他人共用。<br><span class="en">This prescription is personalized — do not share with others.</span></li>
+      <li>请将处方带到当地中药房配药。<br><span class="en">Bring this prescription to a local TCM pharmacy to obtain your herbs.</span></li>
+    </ul>
+  </div>
+
+  <!-- ═══════ 签名 ═══════ -->
+  <div class="sign">
+    <div class="date">
+      日期 / Date: ______________<br>
+      复诊 / Follow-up: ______________
+    </div>
+    <div class="seal">
+      袁大夫 / Dr. Yuan<br>
+      <b>古法度本草</b>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    本处方仅供参考，请勿自行替代西医诊疗 · This prescription complements, not replaces, conventional medical care.
+  </div>
+
+</div>
+
+<script>
+  // 打印按钮（仅屏幕显示）
+  if (window.matchMedia('screen').matches) {
+    var btn = document.createElement('div');
+    btn.innerHTML = '<button onclick="window.print()" style="margin:20px auto;display:block;padding:12px 32px;background:#2d5f3f;color:#fff;border:none;border-radius:24px;font-size:16px;cursor:pointer;">🖨️ 打印 / 转 PDF</button>';
+    document.body.appendChild(btn);
+  }
+</script>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> 袁大夫中医健康咨询 | Dr. Yuan TCM</title>
 <meta name="description" content="40年临床经验 · 真实案例 · 远程健康辅助恢复咨询">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -105,6 +105,38 @@
   </div>
 </section>
 
+<!-- 留言板 Messages -->
+<section class="messages" id="messages">
+  <h2 class="zh">💬 访客留言</h2>
+  <h2 class="en hidden">💬 Guest Messages</h2>
+  <p class="messages-desc zh">来自世界各地访客的留言，我确认后才会公开展示。</p>
+  <p class="messages-desc en hidden">Messages from visitors around the world. I review each one before publishing.</p>
+
+  <div class="message-wall" id="messageWall">
+    <p style="text-align:center;color:#888;">加载留言中...</p>
+  </div>
+
+  <div class="message-form">
+    <h3 class="zh">📝 写下您的留言</h3>
+    <h3 class="en hidden">📝 Leave a Message</h3>
+    <p class="zh" style="color:#888;font-size:14px;">您的留言不会自动公开，我会先看再决定是否展示。如需咨询病情，请通过邮箱或微信联系。</p>
+    <p class="en hidden" style="color:#888;font-size:14px;">Your message won't appear automatically — I'll review it first. For medical inquiries, please email or WeChat me directly.</p>
+    <form action="https://formsubmit.co/folk.tcm.yuanyong26@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="网站留言 - yuanyong2026">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://yuanyong2026.github.io/">
+      <input type="text" name="name" class="zh" placeholder="您的称呼" required>
+      <input type="text" name="name" class="en hidden" placeholder="Your name" required>
+      <input type="email" name="email" class="zh" placeholder="您的邮箱（不会公开）" required>
+      <input type="email" name="email" class="en hidden" placeholder="Your email (won't be shown)" required>
+      <textarea name="message" rows="4" class="zh" placeholder="写下您的留言..." required></textarea>
+      <textarea name="message" rows="4" class="en hidden" placeholder="Write your message..." required></textarea>
+      <button type="submit" class="zh">✉️ 发送留言</button>
+      <button type="submit" class="en hidden">✉️ Send Message</button>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-col">
@@ -132,6 +164,6 @@
 </footer>
 
 <script src="data.js?v=2"></script>
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

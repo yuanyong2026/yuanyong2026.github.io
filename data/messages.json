@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah (Australia)",
+    "date": "2026-07-15",
+    "content": "I found Dr. Yuan's website while researching natural treatments. The detailed case studies with actual medical reports are truly impressive. Thank you for sharing such thorough documentation — it gives real hope to people like me.",
+    "published": true
+  },
+  {
+    "id": 2,
+    "name": "Michael (USA)",
+    "date": "2026-07-22",
+    "content": "I've been dealing with chronic digestive issues for years. The case library here is the most detailed I've seen anywhere. Reading through the treatment records, I can see the consistency and care in each follow-up. Considering reaching out for a consultation.",
+    "published": true
+  }
+]

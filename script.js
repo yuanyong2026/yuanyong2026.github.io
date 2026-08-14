@@ -1,4 +1,4 @@
-// doctoryuan.com — main site script
+﻿// doctoryuan.com — main site script
 // v3 — Full i18n: Chinese / English toggle
 
 // ── Helpers ──
@@ -213,7 +213,46 @@ function backToList() {
 }
 
 // ── Init ──
+// ── Init ──
 document.addEventListener('DOMContentLoaded', function() {
   renderCategories();
   renderCases();
+  loadMessages();
 });
+
+
+// ── Messages Wall ──
+function loadMessages() {
+  var wall = document.getElementById('messageWall');
+  if (!wall) return;
+
+  var isEn = document.documentElement.lang === 'en';
+  var v = 'ms' + (new Date().getMonth()+1) + new Date().getDate();
+  fetch('data/messages.json?v=' + v)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var published = (data||[]).filter(function(m){ return m.published === true; });
+      if (published.length === 0) {
+        wall.innerHTML = isEn
+          ? '<p style="text-align:center;color:#aaa;">No messages yet. Be the first to leave one!</p>'
+          : '<p style="text-align:center;color:#aaa;">还没有留言，期待您的留言！</p>';
+        return;
+      }
+      var html = '';
+      published.forEach(function(m){
+        html += '<div class="message-card">';
+        html += '  <div class="msg-header">';
+        html += '    <strong>' + (m.name||'') + '</strong>';
+        html += '    <span class="msg-date">' + (m.date||'') + '</span>';
+        html += '  </div>';
+        html += '  <p>' + (m.content||'') + '</p>';
+        html += '</div>';
+      });
+      wall.innerHTML = html;
+    })
+    .catch(function(e){
+      wall.innerHTML = isEn
+        ? '<p style="text-align:center;color:#aaa;">Unable to load messages.</p>'
+        : '<p style="text-align:center;color:#aaa;">留言加载失败。</p>';
+    });
+}
